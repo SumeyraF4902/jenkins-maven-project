@@ -3,8 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'source /etc/profile.d/maven.sh'
-                sh 'mvn -f hello-app/pom.xml -B -DskipTests clean package'
+                sh '/opt/maven/bin/mvn -f hello-app/pom.xml -B -DskipTests clean package'
             }
             post {
                 success {
@@ -15,8 +14,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'source /etc/profile.d/maven.sh'
-                sh 'mvn -f hello-app/pom.xml test'
+                sh '/opt/maven/bin/mvn -f hello-app/pom.xml test'
             }
             post {
                 always {
@@ -26,3 +24,4 @@ pipeline {
         }
     }
 }
+
